@@ -24,7 +24,61 @@ the output of the program is:
 Exception: Negative step count entered.
 '''
 
+
+
+"""
+
+File:5_Make.py
+
+Name:Max Moehr
+
+
+Requirements: Make Pedometer
+create  steps_to_miles() function to output miles
+create ValueError object with apropriate error message for values less than 0
+
+
+Constants: 2000
+
+Variables: steps_walked - user input
+miles_walked - calculation from steps to miles
+miles - what is returned in function steps_to_miles
+
+input: number of steps walked
+
+calculated: steps to miles (2,000 steps per mile)
+
+Output: floating-point value to two cecimal places (miles)
+
+
+Key design considerations: making error messages understandable and outputting converted miles
+
+Test data: 
+program start :
+
+'enter number of steps walked: '
+
+user input: '3000'
+
+output: 'you wallked 1.50 miles'
+
+"""
+
 # Define your method here
+def steps_to_miles(): #function that calculates steps to miles
+    steps_walked = int(input("enter number of steps walked: ")) #user input
+    miles_walked = steps_walked/2000 #calculation
+    if steps_walked < 0:
+        raise ValueError('Invalid Step Count') #causes the program to stop and go to error handeling
+    return miles_walked
 
 if __name__ == '__main__':
-    # Type your code here.
+    try:
+        miles = steps_to_miles()
+        
+        print(f'\nyou wallked {miles:.2f} miles\n') #output
+
+    except ValueError as excpt: #what is done when error occurs
+        print(excpt)
+        print('Exception: Negative step count entered.\n')
+
